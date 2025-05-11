@@ -1,2 +1,33 @@
-/* Global Style Imports */
 @import "tailwindcss";
+
+/*------------------*/
+/* GLOBAL VARIABLES */
+/*------------------*/
+:root {
+    
+    /*---- COLORS -----*/
+    /* neutral colors */
+    --neutral-black: #101010;
+    --neutral-black-lighter: #343434;
+    --neutral-white: #f8f8f8;
+    --neutral-white-darker: #e0e0e0;
+
+    /* accent colors */
+    --primary-yellow: #de8651;
+    --primary-yellow-brighter: #e99c6e;
+    --primary-yelllow-darker: #ce7742;
+
+    --secondary-teal: #7bb3bd;
+    --secondary-teal-brighter: #92ccd6;
+    --secondary-teal-darker: #689da7;
+
+    --tertiary-red: #b95456;
+    --tertiary-red-brighter: #cd6668;
+    --tertiary-red-darker: #99494b;
+
+    /* alternate accent colors (for dark mode) */
+    --secondary-alt-teal: #89a4a9;
+    --secondary-alt-teal-brighter: #9fb7bc;
+    --secondary-alt-teal-darker: #6d8c92;
+
+}
