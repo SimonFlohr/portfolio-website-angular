@@ -1,10 +1,16 @@
 @import "tailwindcss";
 @import "./styles.css";
 
+
 /*------------------------------*/
 /* TAILWIND CSS THEME VARIABLES */
 /*------------------------------*/
 @theme {
+
+    /*----- FONTS -----*/
+    --font-sans: var(--sans);
+    --font-serif: var(--serif);
+    --font-mono: var(--mono);
 
     /*---- COLORS -----*/
     /* Neutral colors */

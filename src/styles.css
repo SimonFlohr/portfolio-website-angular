@@ -1,10 +1,56 @@
 @import "tailwindcss";
 
+
+/*--------------*/
+/* FONT IMPORTS */
+/*--------------*/
+/* ia-writer-mono-latin-400-normal */
+@font-face {
+  font-family: 'iA Writer Mono';
+  font-style: normal;
+  font-display: auto;
+  font-weight: 400;
+  src: url(@fontsource/ia-writer-mono/files/ia-writer-mono-latin-400-normal.woff2) format('woff2'), url(@fontsource/ia-writer-mono/files/ia-writer-mono-latin-400-normal.woff) format('woff');
+}
+
+/* ia-writer-mono-latin-700-normal */
+@font-face {
+  font-family: 'iA Writer Mono';
+  font-style: normal;
+  font-display: auto;
+  font-weight: 700;
+  src: url(@fontsource/ia-writer-mono/files/ia-writer-mono-latin-700-normal.woff2) format('woff2'), url(@fontsource/ia-writer-mono/files/ia-writer-mono-latin-700-normal.woff) format('woff');
+}
+
+/* ia-writer-quattro-latin-400-normal */
+@font-face {
+  font-family: 'iA Writer Quattro';
+  font-style: normal;
+  font-display: auto;
+  font-weight: 400;
+  src: url(@fontsource/ia-writer-quattro/files/ia-writer-quattro-latin-400-normal.woff2) format('woff2'), url(@fontsource/ia-writer-quattro/files/ia-writer-quattro-latin-400-normal.woff) format('woff');
+}
+
+/* ia-writer-quattro-latin-700-normal */
+@font-face {
+  font-family: 'iA Writer Quattro';
+  font-style: normal;
+  font-display: auto;
+  font-weight: 700;
+  src: url(@fontsource/ia-writer-quattro/files/ia-writer-quattro-latin-700-normal.woff2) format('woff2'), url(@fontsource/ia-writer-quattro/files/ia-writer-quattro-latin-700-normal.woff) format('woff');
+}
+
+
 /*------------------*/
 /* GLOBAL VARIABLES */
 /*------------------*/
 :root {
     
+    /*----- FONTS -----*/
+    --sans: 'iA Writer Quattro', sans-serif;
+    --serif: 'Lora', serif;
+    --mono: 'iA Writer Mono', monospace;
+
     /*---- COLORS -----*/
     /* neutral colors */
     --neutral-black: #101010;
