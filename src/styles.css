@@ -77,3 +77,41 @@
     --secondary-alt-teal-darker: #6d8c92;
 
 }
+
+
+/*------------------------------*/
+/* TAILWIND CSS THEME VARIABLES */
+/*------------------------------*/
+@theme {
+
+    /*----- FONTS -----*/
+    --font-sans: var(--sans);
+    --font-serif: var(--serif);
+    --font-mono: var(--mono);
+
+    /*---- COLORS -----*/
+    /* Neutral colors */
+    --color-neutral-black: var(--neutral-black);
+    --color-neutral-black-lighter: var(--neutral-black-lighter);
+    --color-neutral-white: var(--neutral-white);
+    --color-neutral-white-darker: var(--neutral-white-darker);
+
+    /* Accent colors */
+    --color-primary-yellow: var(--primary-yellow);
+    --color-primary-yellow-brighter: var(--primary-yellow-brighter);
+    --color-primary-yellow-darker: var(--primary-yellow-darker);
+
+    --color-secondary-teal: var(--secondary-teal);
+    --color-secondary-teal-brighter: var(--secondary-teal-brighter);
+    --color-secondary-teal-darker: var(--secondary-teal-darker);
+
+    --color-tertiary-red: var(--tertiary-red);
+    --color-tertiary-red-brighter: var(--tertiary-red-brighter);
+    --color-tertiary-red-darker: var(--tertiary-red-darker);
+
+    /* Alternate accent colors (for dark mode) */
+    --color-secondary-alt-teal: var(--secondary-alt-teal);
+    --color-secondary-alt-teal-brighter: var(--secondary-alt-teal-brighter);
+    --color-secondary-alt-teal-darker: var(--secondary-alt-teal-darker);
+
+}
