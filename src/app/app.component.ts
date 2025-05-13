@@ -21,12 +21,15 @@ export class AppComponent implements OnInit {
     switch(localStorage.getItem('isDarkMode')) {
       case 'true':
         document.body.style.backgroundColor = 'var(--neutral-black)';
+        document.body.style.color = 'var(--neutral-white';
         break;
       case 'false':
         document.body.style.backgroundColor = 'var(--neutral-white)';
+        document.body.style.color = 'var(--neutral-black';
         break;
       default:
         document.body.style.backgroundColor = 'var(--neutral-black)';
+        document.body.style.color = 'var(--neutral-white';
         break;
     }
   }
