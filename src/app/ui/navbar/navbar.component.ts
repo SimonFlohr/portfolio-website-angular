@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LinksComponent } from './links/links.component';
 import { LogoComponent } from './logo/logo.component';
 import { MobileToggleComponent } from './mobile-toggle/mobile-toggle.component';
-import { ResumeButtonComponent } from './resume-button/resume-button.component';
+import { LanguageDropdownComponent } from './language-dropdown/language-dropdown.component';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +10,7 @@ import { ResumeButtonComponent } from './resume-button/resume-button.component';
     LinksComponent,
     LogoComponent,
     MobileToggleComponent,
-    ResumeButtonComponent
+    LanguageDropdownComponent
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
