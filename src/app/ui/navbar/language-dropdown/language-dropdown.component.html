@@ -1,7 +1,7 @@
-<button class="bg-neutral-white-darker text-neutral-black rounded-lg p-2 pl-3 pr-3 font-bold">
-    <div class="flex w-full items-center justify-center gap-1.5">
-        <img ngSrc="img/us.png" alt="united states country flag" width="20" height="11"/>
-        <span> English </span>
+<button class="bg-neutral-white-darker text-neutral-black rounded-lg p-3 pl-4 pr-4 font-bold">
+    <div class="flex w-full items-center justify-center space-x-1.5">
+        <img [ngSrc]="currLangFlag" alt="united states country flag" width="20" height="11"/>
+        <span [innerText]="currLangSelector"></span>
         <span class="text-xs">▼</span>
     </div>
 </button>

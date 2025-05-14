@@ -8,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './language-dropdown.component.css'
 })
 export class LanguageDropdownComponent {
+  currLang: string = localStorage.getItem("language") || "en-US";
+  // currLang: string = "nl-NL";
+  currLangSelector: string | undefined;
+  currLangFlag: string = "";
 
+  ngOnInit(): void {
+    this.currLangSelector = this.currLang === "en-US" ? " English " : " Nederlands ";
+    this.currLangFlag = this.currLang === "en-US" ? "img/us.png" : "img/nl.png";
+  }
 }
