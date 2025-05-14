@@ -127,6 +127,7 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
         
         // Apply minimal styling without borders - make cells non-interactive
         cell.className = 'absolute bg-neutral-800/0 pointer-events-none';
+        cell.style.zIndex = '-1';
         
         // Position and size the cell
         cell.style.width = `${this.cellSize}px`;
