@@ -131,7 +131,8 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
           
           const opacity = edgeFactor * fadeOutFactor * 0.4; // Max opacity of 0.4
           
-          cell.style.backgroundColor = `rgba(222, 134, 81, ${opacity})`;
+          // cell.style.backgroundColor = `rgba(222, 134, 81, ${opacity})`;
+          cell.style.backgroundColor = `rgba(100, 100, 100, ${opacity})`;
         }
       });
       
@@ -265,7 +266,7 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
     
     // Use Anime.js to create a smooth fade-out effect
     animate(activeCellsArray, {
-      backgroundColor: 'rgba(31, 41, 55, 0)',
+      backgroundColor: 'rgba(100, 100, 100, 0)',
       easing: 'easeOutQuad',
       duration: 800,
       complete: () => {
@@ -298,7 +299,7 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
         
         // Calculate opacity based on distance
         const opacity = Math.max(0, 1 - (distance / radius));
-        cell.style.backgroundColor = `rgba(222, 134, 81, ${opacity * 0.2})`;
+        cell.style.backgroundColor = `rgba(100,100,100, ${opacity * 0.2})`;
       }
     });
     
