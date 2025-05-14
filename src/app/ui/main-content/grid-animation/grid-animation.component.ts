@@ -21,8 +21,12 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
   private activeSet: Set<HTMLElement> = new Set(); // Track active cells
   private isMouseInViewport = false;
   private gridRect: DOMRect | null = null;
+  private isMobileDevice = false; // Flag to detect mobile device
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone) {
+    // Detect if we're on a mobile device
+    this.isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -34,6 +38,12 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
       this.ngZone.runOutsideAngular(() => {
         document.addEventListener('mousemove', this.handleDocumentMouseMove);
         document.addEventListener('mouseout', this.handleDocumentMouseOut);
+        
+        // Add touch event listeners for mobile
+        if (this.isMobileDevice) {
+          this.gridContainer.nativeElement.style.pointerEvents = 'auto'; // Enable touch events
+          document.addEventListener('touchstart', this.handleTouchStart);
+        }
       });
       
       // Store initial grid boundaries
@@ -52,6 +62,93 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
     // Remove document-level event listeners
     document.removeEventListener('mousemove', this.handleDocumentMouseMove);
     document.removeEventListener('mouseout', this.handleDocumentMouseOut);
+    
+    // Remove touch event listeners
+    if (this.isMobileDevice) {
+      document.removeEventListener('touchstart', this.handleTouchStart);
+    }
+  }
+
+  // Add touch event handler
+  private handleTouchStart = (event: TouchEvent): void => {
+    // Prevent default to avoid scrolling/zooming while interacting with the grid
+    event.preventDefault();
+    
+    if (!this.gridRect) {
+      this.updateGridRect();
+    }
+    
+    const touch = event.touches[0];
+    // Convert touch coordinates to local grid coordinates
+    this.mouseX = touch.clientX - (this.gridRect?.left || 0);
+    this.mouseY = touch.clientY - (this.gridRect?.top || 0);
+    
+    // Trigger ripple animation
+    this.createRippleEffect();
+  }
+  
+  // Create a ripple effect from touch point
+  private createRippleEffect(): void {
+    // Clear any existing active cells
+    this.fadeOutActiveCells();
+    
+    // Start with a small radius and expand
+    let currentRadius = 10;
+    const maxRadius = this.radius * 1.5; // Make ripple a bit larger than mouse hover
+    const duration = 800; // Total animation duration in ms
+    const startTime = Date.now();
+    
+    const expandRipple = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Exponential ease-out function for natural ripple effect
+      const easeOutExpo = 1 - Math.pow(1 - progress, 3);
+      
+      // Calculate current radius based on progress
+      currentRadius = 10 + (maxRadius - 10) * easeOutExpo;
+      
+      // Find and activate cells within the current radius
+      const newActiveSet = new Set<HTMLElement>();
+      
+      this.cells.forEach(cell => {
+        const cached = this.cellCache.get(cell);
+        if (!cached) return;
+        
+        const dx = cached.x - this.mouseX;
+        const dy = cached.y - this.mouseY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < currentRadius) {
+          // Add to active set
+          newActiveSet.add(cell);
+          
+          // Calculate opacity based on distance and time
+          // Cells near the edge of the ripple are more visible
+          const distanceRatio = distance / currentRadius;
+          const edgeFactor = Math.max(0, 1 - Math.abs(0.8 - distanceRatio) * 5);
+          const fadeOutFactor = Math.max(0, 1 - progress); // Gradually fade out
+          
+          const opacity = edgeFactor * fadeOutFactor * 0.4; // Max opacity of 0.4
+          
+          cell.style.backgroundColor = `rgba(222, 134, 81, ${opacity})`;
+        }
+      });
+      
+      // Update the active set
+      this.activeSet = newActiveSet;
+      
+      // Continue animation until complete
+      if (progress < 1) {
+        requestAnimationFrame(expandRipple);
+      } else {
+        // Fade out all cells when ripple is complete
+        this.fadeOutActiveCells();
+      }
+    };
+    
+    // Start the ripple animation
+    requestAnimationFrame(expandRipple);
   }
 
   private updateGridRect(): void {
