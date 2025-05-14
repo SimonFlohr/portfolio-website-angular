@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, HostListener, OnDestroy } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, HostListener, OnDestroy, NgZone } from '@angular/core';
 import { animate } from 'animejs';
 
 @Component({
@@ -20,12 +20,24 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
   private cellCache: Map<HTMLElement, { x: number, y: number }> = new Map();
   private activeSet: Set<HTMLElement> = new Set(); // Track active cells
   private isMouseInViewport = false;
+  private gridRect: DOMRect | null = null;
+
+  constructor(private ngZone: NgZone) {}
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.createGrid();
       this.setupResizeObserver();
       this.isMouseInViewport = true; // Assume mouse starts in viewport
+      
+      // Add document-level mouse tracking
+      this.ngZone.runOutsideAngular(() => {
+        document.addEventListener('mousemove', this.handleDocumentMouseMove);
+        document.addEventListener('mouseout', this.handleDocumentMouseOut);
+      });
+      
+      // Store initial grid boundaries
+      this.updateGridRect();
     }, 100);
   }
 
@@ -35,6 +47,45 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
     }
     if (this.animationFrame) {
       cancelAnimationFrame(this.animationFrame);
+    }
+    
+    // Remove document-level event listeners
+    document.removeEventListener('mousemove', this.handleDocumentMouseMove);
+    document.removeEventListener('mouseout', this.handleDocumentMouseOut);
+  }
+
+  private updateGridRect(): void {
+    this.gridRect = this.gridContainer.nativeElement.getBoundingClientRect();
+  }
+
+  private handleDocumentMouseMove = (event: MouseEvent): void => {
+    this.isMouseInViewport = true;
+    
+    const now = Date.now();
+    if (now - this.lastMoveTime < 16) { // Limit to ~60fps
+      return;
+    }
+    this.lastMoveTime = now;
+    
+    if (!this.gridRect) {
+      this.updateGridRect();
+    }
+    
+    // Convert global coordinates to local grid coordinates
+    this.mouseX = event.clientX - (this.gridRect?.left || 0);
+    this.mouseY = event.clientY - (this.gridRect?.top || 0);
+    
+    // Use requestAnimationFrame for smoother animation
+    if (!this.animationFrame) {
+      this.animationFrame = requestAnimationFrame(() => this.updateAnimation());
+    }
+  }
+
+  private handleDocumentMouseOut = (event: MouseEvent): void => {
+    // Check if mouse left the document
+    if (event.relatedTarget === null) {
+      this.isMouseInViewport = false;
+      this.fadeOutActiveCells();
     }
   }
 
@@ -51,6 +102,8 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
       this.activeSet.clear();
       
       this.createGrid();
+      // Update the grid boundaries after resize
+      this.updateGridRect();
     });
     
     this.resizeObserver.observe(this.gridContainer.nativeElement);
@@ -72,8 +125,8 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
       for (let col = 0; col < cols; col++) {
         const cell = document.createElement('div');
         
-        // Apply minimal styling without borders
-        cell.className = 'absolute bg-neutral-800/0';
+        // Apply minimal styling without borders - make cells non-interactive
+        cell.className = 'absolute bg-neutral-800/0 pointer-events-none';
         
         // Position and size the cell
         cell.style.width = `${this.cellSize}px`;
@@ -94,45 +147,18 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
     container.appendChild(fragment);
   }
 
+  // Keep these methods for backward compatibility but they're no longer needed
   @HostListener('mousemove', ['$event'])
-  onMouseMove(event: MouseEvent): void {
-    this.isMouseInViewport = true;
-    
-    const now = Date.now();
-    if (now - this.lastMoveTime < 16) { // Limit to ~60fps
-      return;
-    }
-    this.lastMoveTime = now;
-    
-    const rect = this.gridContainer.nativeElement.getBoundingClientRect();
-    this.mouseX = event.clientX - rect.left;
-    this.mouseY = event.clientY - rect.top;
-    
-    // Use requestAnimationFrame for smoother animation
-    if (!this.animationFrame) {
-      this.animationFrame = requestAnimationFrame(() => this.updateAnimation());
-    }
-  }
+  onMouseMove(event: MouseEvent): void {}
 
   @HostListener('mouseenter')
-  onMouseEnter(): void {
-    this.isMouseInViewport = true;
-  }
+  onMouseEnter(): void {}
 
   @HostListener('mouseleave')
-  onMouseLeave(): void {
-    this.isMouseInViewport = false;
-    this.fadeOutActiveCells();
-  }
+  onMouseLeave(): void {}
   
   @HostListener('window:mouseout', ['$event'])
-  onWindowMouseOut(event: MouseEvent): void {
-    // Check if mouse left the document
-    if (event.relatedTarget === null) {
-      this.isMouseInViewport = false;
-      this.fadeOutActiveCells();
-    }
-  }
+  onWindowMouseOut(event: MouseEvent): void {}
 
   private fadeOutActiveCells(): void {
     if (this.activeSet.size === 0) return;
