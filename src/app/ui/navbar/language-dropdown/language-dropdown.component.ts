@@ -17,4 +17,6 @@ export class LanguageDropdownComponent implements OnInit {
     this.currLangSelector = this.currLang === "en-US" ? " English " : " Nederlands ";
     this.currLangFlag = this.currLang === "en-US" ? "img/us.png" : "img/nl.png";
   }
+
+  // TODO -> Implement the language dropdown functionality
 }
