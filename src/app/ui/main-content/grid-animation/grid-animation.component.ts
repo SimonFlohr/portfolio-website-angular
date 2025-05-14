@@ -93,9 +93,9 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
     this.fadeOutActiveCells();
     
     // Start with a small radius and expand
-    let currentRadius = 10;
-    const maxRadius = this.radius * 1.5; // Make ripple a bit larger than mouse hover
-    const duration = 800; // Total animation duration in ms
+    let currentRadius = 1;
+    const maxRadius = this.radius * 1.1; // Make ripple a bit larger than mouse hover
+    const duration = 400; // Total animation duration in ms
     const startTime = Date.now();
     
     const expandRipple = () => {
