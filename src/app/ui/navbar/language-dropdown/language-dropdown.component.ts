@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-language-dropdown',
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './language-dropdown.component.html',
   styleUrl: './language-dropdown.component.css'
 })
-export class LanguageDropdownComponent {
+export class LanguageDropdownComponent implements OnInit {
   currLang: string = localStorage.getItem("language") || "en-US";
   // currLang: string = "nl-NL";
   currLangSelector: string | undefined;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,6 +7,14 @@ import { RouterLink } from '@angular/router';
   templateUrl: './links.component.html',
   styleUrl: './links.component.css'
 })
-export class LinksComponent {
+export class LinksComponent implements OnInit {
+  linkArray: string[] = [];
 
+  ngOnInit(): void {
+    if (localStorage.getItem("language") === "nl-NL") {
+      this.linkArray = ["Introductie", "Opleidingen", "Projecten", "Contact"];
+    } else {
+      this.linkArray = ["About", "Education", "Projects", "Contact"];
+    }
+  }
 }

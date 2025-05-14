@@ -59,6 +59,7 @@ export class AppComponent implements OnInit {
   // Set the language to the given language
   setLanguage(language: string): void {
     localStorage.setItem("language", language);
+    // localStorage.setItem("language", "nl-NL");
   }
 
 }
