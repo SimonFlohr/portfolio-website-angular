@@ -2,14 +2,16 @@ import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, HostListene
 import { animate } from 'animejs';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MagneticButtonDirective } from '../../../shared/directives/magnetic-button.directive';
+import { ProfilePicComponent } from "./profile-pic/profile-pic.component";
 
 @Component({
   selector: 'app-hero',
   imports: [
     CommonModule,
     MagneticButtonDirective,
-    NgOptimizedImage
-  ],
+    NgOptimizedImage,
+    ProfilePicComponent
+],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css',
   standalone: true
