@@ -1,15 +1,17 @@
-<div class="flex flex-wrap align-middle justify-center">
+<div class="flex flex-wrap-reverse align-middle justify-center">
   <div class="flex-column max-w-2xl">
     <h1>Hello,<br>I'm <span class="text-primary-yellow">Simon Flohr</span></h1>
     <p>Welcome to my portfolio. I'm a passionate full-stack software developer during works hours, and a dedicated dad and husband the rest of the time. Creating things and solving problems brings me joy.</p>
     <!-- <button class="mt-[1.1rem] border-primary-yellow border-2 text-primary-yellow rounded-lg p-3 pl-4 pr-4 font-bold">Download Resume</button> -->
-    <button
+    <a
     appMagneticButton
     [magneticStrengthX]="8" 
     [magneticStrengthY]="6"
-    class="relative mt-[1.1rem] border-primary-yellow border-2 text-primary-yellow rounded-lg p-3 pl-4 pr-4 font-bold hover:bg-primary-yellow/20 transition-all overflow-hidden">
+    [href]="resumeLink"
+    target="_blank"
+    class="relative select-none top-9 mt-[1.1rem] border-primary-yellow border-2 text-primary-yellow rounded-lg p-3 pl-4 pr-4 font-bold hover:bg-primary-yellow/20 transition-all overflow-hidden">
       <span #buttonText class="inline-block">View Resume <img class="inline-block mt-[-4px]" ngSrc="img/new-tab-orange-icon.png" width="16" height="16"/></span>
-    </button>
+    </a>
   </div>
   <div class="m-auto">
     <p>test</p>

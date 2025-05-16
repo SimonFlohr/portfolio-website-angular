@@ -15,5 +15,8 @@ import { MagneticButtonDirective } from '../../../shared/directives/magnetic-but
   standalone: true
 })
 export class HeroComponent {
+
+  // TODO -> Update resume link to actual resume
+  resumeLink: string = "https://drive.google.com/file/d/1JyO4bwQOvopTW4-47_84WMZ-GqlAJLz7/view?usp=sharing";
   
 }
