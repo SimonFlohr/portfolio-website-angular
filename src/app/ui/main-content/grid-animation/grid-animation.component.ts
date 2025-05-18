@@ -299,7 +299,7 @@ export class GridAnimationComponent implements AfterViewInit, OnDestroy {
         
         // Calculate opacity based on distance
         const opacity = Math.max(0, 1 - (distance / radius));
-        cell.style.backgroundColor = `rgba(100,100,100, ${opacity * 0.2})`;
+        cell.style.backgroundColor = `rgba(100,100,100, ${opacity * 0.35})`;
       }
     });
     
