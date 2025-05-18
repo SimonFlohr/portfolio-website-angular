@@ -5,11 +5,11 @@
         <app-links></app-links>
         <app-language-dropdown></app-language-dropdown>
     </div>
-    <app-mobile-toggle class="lg:hidden pr-7" (menuDataEmitter)="handleMenuData($event)"></app-mobile-toggle>
+    <app-mobile-toggle id="mobile-toggle" class="lg:hidden pr-7" (menuDataEmitter)="handleMenuData($event)"></app-mobile-toggle>
 </div>
 
 <!-- Mobile Navbar -->
-<div class="lg:hidden overflow-y-auto translate-x-[100%] z-40 fixed w-full top-[100px] h-[calc(100vh-100px)] bg-black/90 backdrop-blur-xl backdrop-grayscale border-t-1 border-neutral-white/50">
+<div id="mobile-navbar" class="lg:hidden overflow-y-auto translate-x-[1030px] z-40 fixed w-full top-[100px] h-[calc(100vh-100px)] bg-black/90 backdrop-blur-xl backdrop-grayscale border-t-1 border-neutral-white/50">
     <div class="flex-column w-fill m-5 max-lg:text-center">
         <app-language-dropdown></app-language-dropdown>
         <app-links></app-links>
