@@ -119,11 +119,16 @@
 /*------------*/
 /* TYPOGRAPHY */
 /*------------*/
-h1 {
+
+h1.h1 {
   font-size: 4rem;
   font-weight: bold;
   line-height: 1.1;
   word-spacing: -10px;
   letter-spacing: -1px;
   margin-bottom: 1.1rem;
+
+  @media (width <= 48rem) {
+    font-size: 3rem;
+  }
 }
