@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import { animate } from 'animejs';
 
 @Component({
@@ -10,6 +10,7 @@ import { animate } from 'animejs';
 export class MobileToggleComponent {
 
   isMenuOpen: boolean = false;
+  @Output() menuDataEmitter = new EventEmitter<boolean>();
 
   constructor(
     private el: ElementRef<HTMLElement>
@@ -17,6 +18,7 @@ export class MobileToggleComponent {
 
   toggleMobileMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+    this.emitMenuData();
     if (this.isMenuOpen) {
       this.animateMobileToggle(true);
     } else {
@@ -52,6 +54,10 @@ export class MobileToggleComponent {
       duration: 100,
       easing: 'outQuad'
     })
+  }
+
+  emitMenuData(): void {
+    this.menuDataEmitter.emit(this.isMenuOpen);
   }
 
 }
