@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { SubtleLinkAnimationDirective } from '../../../shared/directives/subtle-link-animation.directive';
 
 @Component({
   selector: 'app-links',
-  imports: [RouterLink],
+  imports: [
+    RouterLink,
+    SubtleLinkAnimationDirective
+  ],
   templateUrl: './links.component.html',
   styleUrl: './links.component.css'
 })
