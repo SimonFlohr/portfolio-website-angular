@@ -25,7 +25,7 @@ export class SubtleLinkAnimationDirective implements AfterViewInit {
   onPointerEnter(event: MouseEvent): void {
     if (!this.linkElement) return;
     animate(this.linkElement, {
-      translateY: -4,
+      translateY: -3,
       duration: 100,
       easing: 'easeInOutElastic(.8, .5)'
     });
