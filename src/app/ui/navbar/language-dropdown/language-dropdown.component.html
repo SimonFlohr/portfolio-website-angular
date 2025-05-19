@@ -1,7 +1,21 @@
-<button class="bg-neutral-white-darker/90 hover:bg-neutral-white-darker text-neutral-black-lighter hover:text-neutral-black transition cursor-pointer duration-200 ease-in-out max-lg:mt-10 rounded-lg p-2 pl-3 pr-3 font-bold">
+<button id="language-dropdown-button" class="bg-neutral-white-darker/90 hover:bg-neutral-white-darker text-neutral-black-lighter hover:text-neutral-black transition cursor-pointer duration-200 ease-in-out max-lg:mt-10 rounded-lg p-2 pl-3 pr-3 font-bold" (click)="this.toggleDropdown()">
     <div class="flex w-full items-center justify-center space-x-1.5">
         <img [ngSrc]="currLangFlag" alt="united states country flag" width="20" height="11"/>
         <span [innerText]="currLangSelector"></span>
         <span class="text-xs">▼</span>
+    </div>
+</button>
+
+<button id="nl-dropdown" class="z-100 hidden opacity-0 -translate-y-10 absolute cursor-pointer mt-1 p-2 px-3 top-17 right-7 rounded-lg bg-neutral-white-darker/50 hover:bg-neutral-white-darker text-neutral-white-darker hover:text-neutral-black font-bold transition duration-100 ease-in-out" (click)="changeLanguage('nl-NL')">
+    <div class="flex w-full items-center justify-center space-x-1.5">
+        <img ngSrc="img/nl.png" alt="dutch country flag" width="20" height="11"/>
+        <span>Nederlands</span>
+    </div>
+</button>
+
+<button id="en-dropdown" class="z-100 hidden opacity-0 w-39.5 -translate-y-10 absolute cursor-pointer mt-1 p-2 top-17 right-7 rounded-lg bg-neutral-white-darker/50 hover:bg-neutral-white-darker text-neutral-white-darker hover:text-neutral-black font-bold transition duration-100 ease-in-out" (click)="changeLanguage('en-US')">
+    <div class="flex w-full items-center justify-center space-x-1.5">
+        <img ngSrc="img/us.png" alt="united states country flag" width="20" height="11"/>
+        <span>English</span>
     </div>
 </button>

@@ -48,6 +48,8 @@ export class AppComponent implements OnInit {
   // Detect the user's browser language and set the language accordingly
   // TODO -> Move browser language detection to a service
   detectBrowserLanguage(): void {
+  // Only detect and set browser language if no preference is saved
+  if (!localStorage.getItem("language")) {
     const browserLanguage = navigator.language || (navigator as any).userLanguage;
     
     let language = "en-US";
@@ -57,6 +59,7 @@ export class AppComponent implements OnInit {
 
     this.setLanguage(language);
   }
+}
 
   // Set the language to the given language
   setLanguage(language: string): void {
