@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MagneticButtonDirective } from '../../../shared/directives/magnetic-button.directive';
 import { ProfilePicComponent } from "./profile-pic/profile-pic.component";
+import { SocialsComponent } from "./socials/socials.component";
 
 @Component({
   selector: 'app-hero',
@@ -9,7 +10,9 @@ import { ProfilePicComponent } from "./profile-pic/profile-pic.component";
     CommonModule,
     MagneticButtonDirective,
     NgOptimizedImage,
-    ProfilePicComponent
+    ProfilePicComponent,
+    SocialsComponent,
+    SocialsComponent
 ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css',
