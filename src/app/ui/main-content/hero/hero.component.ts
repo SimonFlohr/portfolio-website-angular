@@ -11,7 +11,6 @@ import { SocialsComponent } from "./socials/socials.component";
     MagneticButtonDirective,
     NgOptimizedImage,
     ProfilePicComponent,
-    SocialsComponent,
     SocialsComponent
 ],
   templateUrl: './hero.component.html',
