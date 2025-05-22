@@ -1,5 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CardAnimationService } from '../../../shared/services/card-animation.service';
 
 @Component({
   selector: 'app-education',
@@ -9,12 +10,33 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './education.component.html',
   styleUrl: './education.component.css'
 })
-export class EducationComponent implements OnInit {
+export class EducationComponent implements OnInit, AfterViewInit {
 
   currLanguage: string | null = null;
 
+  constructor(private cas: CardAnimationService) { }
+
   ngOnInit(): void {
     this.currLanguage = localStorage.getItem("language");
+  }
+
+  ngAfterViewInit(): void {
+      this.cas.setVars(
+        document.getElementById('education-card-1')!,
+        document.getElementById('education-card-1-reflection-overlay-img')!,
+        document.getElementById('education-card-1-school-building-img')!,
+        document.getElementById('education-card-1-text-container')!,
+        document.getElementById('education-card-1-radial-gradient')!,
+        document.getElementById('education-card-1-bg-img')!
+      );
+  }
+
+  onMouseOver($event: MouseEvent): void {
+    this.cas.animateCard($event, false);
+  }
+
+  onMouseLeave($event: MouseEvent): void {
+    this.cas.animateCard($event, true);
   }
 
 }
