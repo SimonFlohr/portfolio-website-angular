@@ -4,7 +4,7 @@
         <p class="mb-7.5 mt-6">@if (currLanguage === 'en-US') {My educational journey has been pivotal in shaping who I've become. Here are some milestones that highlight this growth.} @else if (currLanguage === 'nl-NL') {Mijn educatieve achtergrond heeft me gevormd tot wie ik nu ben. Met enthousiasme deel ik graag de prestaties die hieraan hebben bijgedragen.}</p>
     </div>
     <div id="education-section-grid" class="grid max-md:grid-cols-1 max-xl:grid-cols-6 grid-cols-12 max-md:grid-rows-5 max-xl:grid-rows-3 grid-rows-2 gap-7.5 max-md:h-210 max-xl:h-154 h-100 mt-15">
-        <div id="education-card-1" class="relative max-md:col-span-1 max-xl:col-span-6 col-span-8 row-1 w-full border-2 border-neutral-white-darker rounded-xl bg-black shadow-lg shadow-black/40" (mouseover)="onMouseOver($event)" (mouseleave)="onMouseLeave($event)">
+        <div id="education-card-1" class="relative max-md:col-span-1 max-xl:col-span-6 col-span-8 row-1 w-full border-2 border-neutral-white-darker rounded-xl bg-black shadow-lg shadow-black/40" (mouseover)="onMouseOver(1)" (mouseleave)="onMouseLeave(1)">
             <div id="education-card-1-text-container" class="z-15 flex max-sm:scale-70 max-md:scale-85 max-sm:pl-5 max-md:pl-55 pl-60 pr-5 items-center justify-center absolute w-full h-full select-none pointer-events-none">
                 <div class="relative flex-column w-fit h-fit text-center">
                     <h3 class="h3">MS, Software Engineering - AI Engineering</h3>
@@ -19,11 +19,33 @@
                 <img id="education-card-1-bg-img" src="img/card-1-bg.jpg" alt="card background" class="z-10 absolute opacity-30 w-full h-full object-cover rounded-xl select-none pointer-events-none">
             </div>
         </div>
-        <div id="education-card-2" class="max-md:col-span-1 max-xl:col-span-3 col-span-4 row-2 w-full rounded-xl bg-black">
-            
+        <div id="education-card-2" class="relative max-md:col-span-1 max-xl:col-span-3 col-span-4 row-2 w-full border-2 border-neutral-white-darker rounded-xl bg-black shadow-lg shadow-black/40" (mouseover)="onMouseOver(2)" (mouseleave)="onMouseLeave(2)">
+            <div id="education-card-2-text-container" class="z-15 flex max-sm:scale-70 max-md:scale-85 px-5 items-center justify-center absolute w-full h-full select-none pointer-events-none">
+                <div class="relative flex-column w-fit h-fit text-center">
+                    <h3 class="h3">BS, Software Engineering</h3>
+                    <p class="h3">Western Governors University</p>
+                    <span style="font-size: 0.8rem;"><i> Feb 2025</i></span>
+                </div>
+            </div>
+            <div class="relative overflow-hidden w-full h-full">
+                <img id="education-card-2-reflection-overlay-img" src="img/reflection-overlay.png" alt="reflection overlay" class="z-14 opacity-40 absolute top-10 max-md:left-0 left-20 object-cover rounded-xl min-w-[100%] select-none pointer-events-none">
+                <div id="education-card-2-radial-gradient" class="z-11 absolute h-full w-full rounded-xl bg-radial-[at_10%_5%] from-[#7b8a8d] to-[#141717] opacity-70 select-none pointer-events-none"></div>
+                <img id="education-card-2-bg-img" src="img/card-1-bg.jpg" alt="card background" class="z-10 absolute opacity-30 w-full h-full object-cover rounded-xl select-none pointer-events-none">
+            </div>
         </div>
-        <div id="education-card-3" class="max-md:col-span-1 max-xl:col-span-3 col-span-4 max-md:row-3 row-2 w-full rounded-xl bg-black">
-            
+        <div id="education-card-3" class="relative max-md:col-span-1 max-xl:col-span-3 col-span-4 max-md:row-3 row-2 w-full border-2 border-neutral-white-darker rounded-xl bg-black shadow-lg shadow-black/40" (mouseover)="onMouseOver(3)" (mouseleave)="onMouseLeave(3)">
+            <div id="education-card-3-text-container" class="z-15 flex max-sm:scale-70 max-md:scale-85 px-5 items-center justify-center absolute w-full h-full select-none pointer-events-none">
+                <div class="relative flex-column w-fit h-fit text-center">
+                    <h3 class="h3">AS, Business</h3>
+                    <p class="h3">Santa Monica College</p>
+                    <span style="font-size: 0.8rem;"><i> Sep 2021</i></span>
+                </div>
+            </div>
+            <div class="relative overflow-hidden w-full h-full">
+                <img id="education-card-3-reflection-overlay-img" src="img/reflection-overlay.png" alt="reflection overlay" class="z-14 opacity-40 absolute top-10 max-md:left-0 left-20 object-cover rounded-xl min-w-[100%] select-none pointer-events-none">
+                <div id="education-card-3-radial-gradient" class="z-11 absolute h-full w-full rounded-xl bg-radial-[at_10%_5%] from-[#7b8a8d] to-[#141717] opacity-70 select-none pointer-events-none"></div>
+                <img id="education-card-3-bg-img" src="img/card-1-bg.jpg" alt="card background" class="z-10 absolute opacity-30 w-full h-full object-cover rounded-xl select-none pointer-events-none">
+            </div>
         </div>
         <div id="education-card-4" class="max-md:col-span-1 max-xl:col-span-6 col-span-4 max-md:row-4 max-xl:row-3 row-span-2 w-full rounded-xl bg-black">
             
