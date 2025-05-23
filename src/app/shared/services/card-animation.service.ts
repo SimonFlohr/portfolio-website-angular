@@ -10,7 +10,6 @@ export class CardAnimationService {
   cardReflection: HTMLElement | null = null;
   cardOverlayImg: HTMLElement | null = null;
   cardTitle: HTMLElement | null = null;
-  cardGradient: HTMLElement | null = null;
   cardBgImg: HTMLElement | null = null;
 
   constructor() { }
@@ -18,72 +17,42 @@ export class CardAnimationService {
   setVars(
     card: HTMLElement,
     cardReflection: HTMLElement,
-    cardOverlayImg: HTMLElement | null,
     cardTitle: HTMLElement,
-    cardGradient: HTMLElement,
-    cardBgImg: HTMLElement
+    cardBgImg: HTMLElement,
+    cardOverlayImg: HTMLElement | null = null
   ): void {
     this.card = card;
     this.cardReflection = cardReflection;
     this.cardOverlayImg = cardOverlayImg;
     this.cardTitle = cardTitle;
-    this.cardGradient = cardGradient;
     this.cardBgImg = cardBgImg;
   }
 
   animateCard($event: MouseEvent, isEntered: boolean): void {
-    if (!isEntered) {
       animate(this.card!, {
-        scale: 1.01,
+        scale: !isEntered ? 1.01 : 1,
         duration: 100,
         easing: 'easeOutElastic(.8, .5)'
       });
-      animate(this.cardOverlayImg!, {
-        translateX: -10,
-        scale: 1.03,
-        rotate: -3,
-        duration: 150,
-        easing: 'easeOutElastic(.8, .5)'
-      });
+      if (this.cardOverlayImg) {
+        animate(this.cardOverlayImg!, {
+            translateX: !isEntered ? -10 : 0,
+          scale: !isEntered ? 1.03 : 1,
+          rotate: !isEntered ? -3 : 0,
+          duration: 150,
+          easing: 'easeOutElastic(.8, .5)'
+        });
+      }
       animate(this.cardReflection!, {
-        translateX: -100,
-        scale: 1.3,
+        translateX: !isEntered ? -100 : 0,
+        scale: !isEntered ? 1.3 : 1,
         duration: 150,
         easing: 'easeOutElastic(.8, .5)'
       });
       animate(this.cardBgImg!, {
-        translateX: 0,
-        scale: 1.05,
-        rotate: 0,
+        scale: !isEntered ? 1.05 : 1,
         duration: 150,
         easing: 'easeOutElastic(.8, .5)'
       });
-    } else if (isEntered) {
-      animate(this.card!, {
-        scale: 1,
-        duration: 150,
-        easing: 'easeOutElastic(.8, .5)'
-      });
-      animate(this.cardOverlayImg!, {
-        translateX: 0,
-        scale: 1,
-        rotate: 0,
-        duration: 150,
-        easing: 'easeOutElastic(.8, .5)'
-      });
-      animate(this.cardReflection!, {
-        translateX: 0,
-        scale: 1,
-        duration: 150,
-        easing: 'easeOutElastic(.8, .5)'
-      });
-      animate(this.cardBgImg!, {
-        translateX: 0,
-        scale: 1,
-        rotate: 0,
-        duration: 150,
-        easing: 'easeOutElastic(.8, .5)'
-      });
-    }
   }
 }

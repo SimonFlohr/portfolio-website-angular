@@ -24,10 +24,9 @@ export class EducationComponent implements OnInit, AfterViewInit {
       this.cas.setVars(
         document.getElementById('education-card-1')!,
         document.getElementById('education-card-1-reflection-overlay-img')!,
-        document.getElementById('education-card-1-school-building-img')!,
         document.getElementById('education-card-1-text-container')!,
-        document.getElementById('education-card-1-radial-gradient')!,
-        document.getElementById('education-card-1-bg-img')!
+        document.getElementById('education-card-1-bg-img')!,
+        document.getElementById('education-card-1-school-building-img')!
       );
   }
 
