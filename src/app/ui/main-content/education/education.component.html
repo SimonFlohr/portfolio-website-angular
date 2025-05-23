@@ -47,8 +47,30 @@
                 <img id="education-card-3-bg-img" src="img/card-1-bg.jpg" alt="card background" class="z-10 absolute opacity-30 w-full h-full object-cover rounded-xl select-none pointer-events-none">
             </div>
         </div>
-        <div id="education-card-4" class="max-md:col-span-1 max-xl:col-span-6 col-span-4 max-md:row-4 max-xl:row-3 row-span-2 w-full rounded-xl bg-black">
-            
+        <div id="education-card-4" class="relative max-md:col-span-1 max-xl:col-span-6 col-span-4 max-md:row-4 max-xl:row-3 row-span-2 w-full border-2 border-neutral-white-darker rounded-xl max-xl:h-60 bg-black shadow-lg shadow-black/40" (mouseover)="onMouseOver(4)" (mouseleave)="onMouseLeave(4)">
+            <div id="education-card-4-text-container" class="z-15 flex max-sm:scale-70 max-md:scale-85 px-0 items-center justify-center absolute w-full h-full select-none pointer-events-none">
+                <div class="relative flex-column w-fit h-fit">
+                    <h3 class="max-xl:text-center h3">Certificates</h3><br>
+                    <div class="max-xl:flex max-xl:gap-20 max-md:gap-8 w-full text-sm">
+                        <div>
+                            <p class="mb-2">AWS Certified Cloud Practitioner (CLF)</p>
+                            <p class="mb-2">CompTIA Project+</p>
+                            <p class="mb-2">CompTIA A+</p>
+                            <p>ITIL® v4 Foundation</p>
+                        </div>
+                        <div>
+                            <p class="mb-2">NSLS Foundations of Leadership</p>
+                            <p class="mb-2">SMC - Entrepreneurship</p>
+                            <p>SMC - Marketing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative overflow-hidden w-full h-full">
+                <img id="education-card-4-reflection-overlay-img" src="img/reflection-overlay.png" alt="reflection overlay" class="z-14 opacity-40 absolute top-35 sm:top-25 md:top-10 xl:top-60 max-md:left-0 left-20 object-cover rounded-xl min-w-[100%] select-none pointer-events-none">
+                <div id="education-card-4-radial-gradient" class="z-11 absolute h-full w-full rounded-xl bg-radial-[at_10%_5%] from-[#7b8a8d] to-[#141717] opacity-70 select-none pointer-events-none"></div>
+                <img id="education-card-4-bg-img" src="img/card-1-bg.jpg" alt="card background" class="z-10 absolute opacity-30 w-full h-full object-cover rounded-xl select-none pointer-events-none">
+            </div>
         </div>
     </div>
 </div>

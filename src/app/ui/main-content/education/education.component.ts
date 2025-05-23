@@ -45,6 +45,13 @@ export class EducationComponent implements OnInit, AfterViewInit {
         document.getElementById('education-card-3-text-container')!,
         document.getElementById('education-card-3-bg-img')!
       );
+      this.cas.setCardElements(
+        4,
+        document.getElementById('education-card-4')!,
+        document.getElementById('education-card-4-reflection-overlay-img')!,
+        document.getElementById('education-card-4-text-container')!,
+        document.getElementById('education-card-4-bg-img')!
+      );
   }
 
   onMouseOver(cardNumber: number): void {
@@ -57,6 +64,9 @@ export class EducationComponent implements OnInit, AfterViewInit {
         break;
       case 3:
         this.cas.animateCard(3, false);
+        break;
+      case 4:
+        this.cas.animateCard(4, false);
         break;
     }
   }
@@ -71,6 +81,9 @@ export class EducationComponent implements OnInit, AfterViewInit {
         break;
       case 3:
         this.cas.animateCard(3, true);
+        break;
+      case 4:
+        this.cas.animateCard(4, true);
         break;
     }
   }
