@@ -9,7 +9,7 @@
                 <div class="relative flex-column w-fit h-fit text-center">
                     <h3 class="h3">MS, Software Engineering - AI Engineering</h3>
                     <p class="h3">Western Governors University</p>
-                    <span style="font-size: 0.8rem;"><i>March 2026 (expected)</i></span>
+                    <span style="font-size: 0.8rem;"><i>@if (currLanguage === 'en-US') {March 2026 (expected)} @else if (currLanguage === 'nl-NL') {maart 2026 (toekomst)}</i></span>
                 </div>
             </div>
             <img id="education-card-1-school-building-img" src="img/school-building.png" alt="school building" class="z-13 max-sm:hidden absolute rounded-xl overflow-visible max-md:w-50 w-[250px] -top-10 -left-5 select-none pointer-events-none">
@@ -24,7 +24,7 @@
                 <div class="relative flex-column w-fit h-fit text-center">
                     <h3 class="h3">BS, Software Engineering</h3>
                     <p class="h3">Western Governors University</p>
-                    <span style="font-size: 0.8rem;"><i> Feb 2025</i></span>
+                    <span style="font-size: 0.8rem;"><i>@if (currLanguage === 'en-US') {Feb 2025} @else if (currLanguage === 'nl-NL') {februari 2025}</i></span>
                 </div>
             </div>
             <div class="relative overflow-hidden w-full h-full">
@@ -38,7 +38,7 @@
                 <div class="relative flex-column w-fit h-fit text-center">
                     <h3 class="h3">AS, Business</h3>
                     <p class="h3">Santa Monica College</p>
-                    <span style="font-size: 0.8rem;"><i> Sep 2021</i></span>
+                    <span style="font-size: 0.8rem;"><i>@if (currLanguage === 'en-US') {Aug 2021} @else if (currLanguage === 'nl-NL') {augustus 2021}</i></span>
                 </div>
             </div>
             <div class="relative overflow-hidden w-full h-full">
@@ -50,7 +50,7 @@
         <div id="education-card-4" class="relative max-md:col-span-1 max-xl:col-span-6 col-span-4 max-md:row-4 max-xl:row-3 row-span-2 w-full border-2 border-neutral-white-darker rounded-xl max-xl:h-60 bg-black shadow-lg shadow-black/40" (mouseover)="onMouseOver(4)" (mouseleave)="onMouseLeave(4)">
             <div id="education-card-4-text-container" class="z-15 flex max-sm:scale-70 max-md:scale-85 px-0 items-center justify-center absolute w-full h-full select-none pointer-events-none">
                 <div class="relative flex-column w-fit h-fit">
-                    <h3 class="max-xl:text-center h3">Certificates</h3><br>
+                    <h3 class="max-xl:text-center h3">@if (currLanguage === 'en-US') {Certificates} @else if (currLanguage === 'nl-NL') {Certificaten}</h3><br>
                     <div class="max-xl:flex max-xl:gap-20 max-md:gap-8 w-full text-sm">
                         <div>
                             <p class="mb-2">AWS Certified Cloud Practitioner (CLF)</p>
