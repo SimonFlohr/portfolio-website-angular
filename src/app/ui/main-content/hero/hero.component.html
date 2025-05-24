@@ -8,19 +8,32 @@
       <p>Welkom op mijn portfolio website. Ik ben een gepassioneerde, full-stack software developer tijdens werkuren en een geïnvesteerde vader en man in mijn vrije tijd. Dingen creeëren en problemen oplossen: daar leef ik voor!</p>
     }
     <div class="flex flex-wrap items-center mt-6 gap-7.5 max-lg:justify-center">
-      <a
-      appMagneticButton
-      [magneticStrengthX]="8" 
-      [magneticStrengthY]="6"
-      [href]="resumeLink"
-      target="_blank"
-      class="relative select-none border-primary-yellow border-2 text-primary-yellow rounded-lg p-3 pl-4 pr-4 font-bold hover:bg-primary-yellow/20 transition-all overflow-hidden">
-        @if (this.currLanguage === "en-US") {
-          <span #buttonText class="inline-block">View Resume <img class="inline-block mt-[-4px]" ngSrc="img/new-tab-orange-icon.png" width="16" height="16"/></span>
-        } @else if (this.currLanguage === "nl-NL") {
-          <span #buttonText class="inline-block">Bekijk CV <img class="inline-block mt-[-4px]" ngSrc="img/new-tab-orange-icon.png" width="16" height="16"/></span>
-        }
-      </a>
+      <div class="flex gap-2">
+        <a
+        appMagneticButton
+        [magneticStrengthX]="8" 
+        [magneticStrengthY]="6"
+        [href]="resumeLink"
+        target="_blank"
+        class="relative select-none border-primary-yellow border-2 text-primary-yellow rounded-lg p-3 pl-4 pr-4 font-bold hover:bg-primary-yellow/20 transition-all overflow-hidden">
+          @if (this.currLanguage === "en-US") {
+            <span #buttonText class="inline-block">View Resume <img class="inline-block mt-[-4px]" ngSrc="img/new-tab-orange-icon.png" width="16" height="16"/></span>
+          } @else if (this.currLanguage === "nl-NL") {
+            <span #buttonText class="inline-block">Bekijk CV <img class="inline-block mt-[-4px]" ngSrc="img/new-tab-orange-icon.png" width="16" height="16"/></span>
+          }
+        </a>
+        <button
+        appMagneticButton
+        [magneticStrengthX]="8" 
+        [magneticStrengthY]="6"
+        class="relative select-none border-primary-yellow border-2 text-neutral-white hover:text-primary-yellow rounded-lg p-3 pl-4 pr-4 font-bold bg-primary-yellow hover:bg-primary-yellow/20 transition-all overflow-hidden">
+          @if (this.currLanguage === "en-US") {
+            <span #buttonText class="inline-block">Go to Projects</span>
+          } @else if (this.currLanguage === "nl-NL") {
+            <span #buttonText class="inline-block">Ga naar Projecten</span>
+          }
+        </button>
+      </div>
       <app-socials></app-socials>
     </div>
   </div>
