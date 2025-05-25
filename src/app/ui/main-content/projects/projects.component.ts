@@ -1,10 +1,12 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MagneticButtonDirective } from '../../../shared/directives/magnetic-button.directive';
 
 @Component({
   selector: 'app-projects',
   imports: [
-    NgOptimizedImage
+    NgOptimizedImage,
+    MagneticButtonDirective
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'

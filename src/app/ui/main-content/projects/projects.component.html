@@ -3,4 +3,29 @@
         <h2 class="h2 -translate-x-[5px]"><img class="inline-block -translate-y-1 max-lg:w-9" ngSrc="img/portfolio.png" alt="portfolio icon" width="40" height="40"/> @if (currLanguage === 'en-US') { Projects} @else if (currLanguage === 'nl-NL') { Projecten}</h2>
         <p class="mb-7.5 mt-6">@if (currLanguage === 'en-US') {The following is a collection of projects that showcase my technological skills and creativity.} @else if (currLanguage === 'nl-NL') {Een verzameling van projecten die mijn technische vaardigheden en creativiteit demonstreren.}</p>
     </div>
+    <div class="flex flex-wrap gap-7.5 justify-center">
+        <div class="z-10 relative flex flex-col border-2 border-primary-yellow w-100 rounded-xl bg-neutral-black/50 backdrop-blur-2xl shadow-lg shadow-black/20 opacity-75 hover:opacity-100 transition-all duration-150 ease-out">
+            <img src="img/project-1-bg@0.5x.jpg" alt="project 1" class="z-1 overflow-hidden rounded-t-[9px]">
+            <div class="flex flex-col gap-2.5 p-7.5">
+                <h3 class="h3">Portfolio Website</h3>
+                <p class="p">The website you are currently on. This project serves to showcase my UI/UX and frontend development skills.</p>
+            </div>
+            <div class="relative bottom-0 w-full">
+                <p class="bottom-10 p-7.5"><span class="inline-block text-md"><i>TECHNOLOGIES:</i></span><br><span class="inline-block text-xs">Angular, TypeScript, HTML, CSS</span></p>
+                <button
+                appMagneticButton
+                [magneticStrengthX]="8" 
+                [magneticStrengthY]="6"
+                class="select-none cursor-pointer w-full text-neutral-white rounded-b-lg p-3 pl-4 pr-4 font-bold bg-primary-yellow transition-all overflow-hidden">
+                    @if (this.currLanguage === "en-US") {
+                        <span #buttonText class="inline-block">Learn More</span>
+                    } @else if (this.currLanguage === "nl-NL") {
+                        <span #buttonText class="inline-block">Lees Meer</span>
+                    }
+                </button>
+            </div>
+        </div>
+        <!-- <div class="border-2 border-primary-yellow h-120 w-100 rounded-xl bg-neutral-black/50 backdrop-blur-2xl shadow-lg shadow-black/20"></div>
+        <div class="border-2 border-primary-yellow h-120 w-100 rounded-xl bg-neutral-black/50 backdrop-blur-2xl shadow-lg shadow-black/20"></div> -->
+    </div>
 </div>
