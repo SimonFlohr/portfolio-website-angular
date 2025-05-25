@@ -4,28 +4,45 @@
         <p class="mb-7.5 mt-6">@if (currLanguage === 'en-US') {The following is a collection of projects that showcase my technological skills and creativity.} @else if (currLanguage === 'nl-NL') {Een verzameling van projecten die mijn technische vaardigheden en creativiteit demonstreren.}</p>
     </div>
     <div class="flex flex-wrap gap-7.5 justify-center">
-        <div class="z-10 relative flex flex-col border-2 border-primary-yellow w-100 rounded-xl bg-neutral-black/50 backdrop-blur-2xl shadow-lg shadow-black/20 opacity-75 hover:opacity-100 transition-all duration-150 ease-out">
-            <img src="img/project-1-bg@0.5x.jpg" alt="project 1" class="z-1 overflow-hidden rounded-t-[9px]">
-            <div class="flex flex-col gap-2.5 p-7.5">
-                <h3 class="h3">Portfolio Website</h3>
-                <p class="p">The website you are currently on. This project serves to showcase my UI/UX and frontend development skills. The emphasis is interactivity, minimalism, and responsiveness.</p>
+        @for (project of projectMap.values(); track project) {
+            <div class="z-10 relative flex flex-col border-2 border-primary-yellow w-100 rounded-xl bg-neutral-black/50 backdrop-blur-2xl shadow-lg shadow-black/20 opacity-75 hover:opacity-100 transition-all duration-150 ease-out">
+                <img [src]="project.imagePath" alt="project 1" class="z-1 overflow-hidden rounded-t-[9px]">
+                <div class="flex flex-col gap-2.5 p-7.5">
+                    <h3 class="h3">{{ projectMap.get(0)?.title }}</h3>
+                    <p class="p">{{ projectMap.get(0)?.shortDescription }}</p>
+                </div>
+                <div class="relative bottom-0 w-full">
+                    <p class="px-7.5 pb-7.5"><span class="inline-block text-md"><i>TECHNOLOGIES:</i></span><br><span class="inline-block text-xs">{{ projectMap.get(0)?.technologies?.join(", ") }}</span></p>
+                    <button
+                    appMagneticButton
+                    [magneticStrengthX]="8" 
+                    [magneticStrengthY]="6"
+                    id="project-expand-button"
+                    (click)="toggleProjectExpand()"
+                    class="select-none cursor-pointer w-full text-neutral-white rounded-b-lg p-3 pl-4 pr-4 font-bold bg-primary-yellow transition-all overflow-hidden">
+                        @if (this.currLanguage === "en-US") {
+                            <span #buttonText class="inline-block">Expand</span>
+                        } @else if (this.currLanguage === "nl-NL") {
+                            <span #buttonText class="inline-block">Vergroten</span>
+                        }
+                    </button>
+                </div>
             </div>
-            <div class="relative bottom-0 w-full">
-                <p class="px-7.5 pb-7.5"><span class="inline-block text-md"><i>TECHNOLOGIES:</i></span><br><span class="inline-block text-xs">Angular, Tailwind CSS, anime.js, Git, Figma, TypeScript, HTML, CSS</span></p>
-                <button
-                appMagneticButton
-                [magneticStrengthX]="8" 
-                [magneticStrengthY]="6"
-                class="select-none cursor-pointer w-full text-neutral-white rounded-b-lg p-3 pl-4 pr-4 font-bold bg-primary-yellow transition-all overflow-hidden">
-                    @if (this.currLanguage === "en-US") {
-                        <span #buttonText class="inline-block">Expand</span>
-                    } @else if (this.currLanguage === "nl-NL") {
-                        <span #buttonText class="inline-block">Vergroten</span>
-                    }
-                </button>
+            <div id="project-expand-container" class="hidden opacity-0 overflow-y-auto z-40 fixed w-full top-[100px] h-[calc(100vh-100px)] bg-black/70 backdrop-blur-xl border-t-1 border-neutral-white/50">
+                <div class="flex flex-col flex-shrink-1 gap-7.5 flex-nowrap justify-self-center mt-10 w-[700px] max-w-[700px] h-100">
+                    <button id="project-minimize-button" (click)="toggleProjectExpand()" class="flex gap-2.5 mt-1 w-[38px] h-[38px] items-center cursor-pointer opacity-75 hover:opacity-100 transition-all duration-150 ease-out">
+                        <div class="w-[38px] h-[38px] space-y-2.5 -ml-1">
+                            <div class="w-10 h-[4px] translate-x-[2px] translate-y-[7px] rotate-[-45deg] bg-neutral-white"></div>
+                            <div class="w-10 h-[4px] translate-x-[2px] translate-y-[-7px] rotate-[45deg] bg-neutral-white"></div>
+                        </div>
+                        <span class="text-neutral-white text-xl -translate-y-[9px]">Close</span>
+                    </button>
+                    <img [src]="project.imagePath" alt="project 1" class="rounded-xl object-scale h-fit">
+                    <h3 class="h3">{{ projectMap.get(0)?.title }}</h3>
+                    <p class="p">{{ projectMap.get(0)?.longDescription }}</p>
+                    <p class="px-7.5 pb-7.5"><span class="inline-block text-md"><i>TECHNOLOGIES:</i></span><br><span class="inline-block text-xs">{{ projectMap.get(0)?.technologies?.join(", ") }}</span></p>
+                </div>
             </div>
-        </div>
-        <!-- <div class="border-2 border-primary-yellow h-120 w-100 rounded-xl bg-neutral-black/50 backdrop-blur-2xl shadow-lg shadow-black/20"></div>
-        <div class="border-2 border-primary-yellow h-120 w-100 rounded-xl bg-neutral-black/50 backdrop-blur-2xl shadow-lg shadow-black/20"></div> -->
+        }
     </div>
 </div>
