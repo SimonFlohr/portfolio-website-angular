@@ -1,4 +1,4 @@
-<div class="flex-column flex-nowrap mt-30 mb-50">
+<div class="flex-column flex-nowrap max-md:mt-0 max-xl:mt-40 mt-30 mb-50">
     <div class="w-fit mx-auto text-center max-w-200">
         <h2 class="h2 -translate-x-[5px]"><img class="inline-block -translate-y-1 max-lg:w-9" ngSrc="img/portfolio.png" alt="portfolio icon" width="40" height="40"/> @if (currLanguage === 'en-US') { Projects} @else if (currLanguage === 'nl-NL') { Projecten}</h2>
         <p class="mb-7.5 mt-6">@if (currLanguage === 'en-US') {The following is a collection of projects that showcase my technological skills and creativity.} @else if (currLanguage === 'nl-NL') {Een verzameling van projecten die mijn technische vaardigheden en creativiteit demonstreren.}</p>
@@ -8,19 +8,19 @@
             <img src="img/project-1-bg@0.5x.jpg" alt="project 1" class="z-1 overflow-hidden rounded-t-[9px]">
             <div class="flex flex-col gap-2.5 p-7.5">
                 <h3 class="h3">Portfolio Website</h3>
-                <p class="p">The website you are currently on. This project serves to showcase my UI/UX and frontend development skills.</p>
+                <p class="p">The website you are currently on. This project serves to showcase my UI/UX and frontend development skills. The emphasis is interactivity, minimalism, and responsiveness.</p>
             </div>
             <div class="relative bottom-0 w-full">
-                <p class="bottom-10 p-7.5"><span class="inline-block text-md"><i>TECHNOLOGIES:</i></span><br><span class="inline-block text-xs">Angular, TypeScript, HTML, CSS</span></p>
+                <p class="px-7.5 pb-7.5"><span class="inline-block text-md"><i>TECHNOLOGIES:</i></span><br><span class="inline-block text-xs">Angular, Tailwind CSS, anime.js, Git, Figma, TypeScript, HTML, CSS</span></p>
                 <button
                 appMagneticButton
                 [magneticStrengthX]="8" 
                 [magneticStrengthY]="6"
                 class="select-none cursor-pointer w-full text-neutral-white rounded-b-lg p-3 pl-4 pr-4 font-bold bg-primary-yellow transition-all overflow-hidden">
                     @if (this.currLanguage === "en-US") {
-                        <span #buttonText class="inline-block">Learn More</span>
+                        <span #buttonText class="inline-block">Expand</span>
                     } @else if (this.currLanguage === "nl-NL") {
-                        <span #buttonText class="inline-block">Lees Meer</span>
+                        <span #buttonText class="inline-block">Vergroten</span>
                     }
                 </button>
             </div>
