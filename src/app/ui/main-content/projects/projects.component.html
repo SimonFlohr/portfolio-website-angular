@@ -28,6 +28,7 @@
                     </button>
                 </div>
             </div>
+            <!-- TODO -> make the expansion container responsive -->
             <div id="project-expand-container" class="hidden opacity-0 overflow-y-auto z-40 fixed w-full top-[100px] h-[calc(100vh-100px)] bg-black/70 backdrop-blur-xl border-t-1 border-neutral-white/50">
                 <div class="flex flex-col flex-shrink-1 gap-7.5 flex-nowrap justify-self-center mt-10 w-[700px] max-w-[700px] h-100">
                     <button id="project-minimize-button" (click)="toggleProjectExpand()" class="flex gap-2.5 mt-1 w-[38px] h-[38px] items-center cursor-pointer opacity-75 hover:opacity-100 transition-all duration-150 ease-out">
@@ -40,7 +41,10 @@
                     <img [src]="project.imagePath" alt="project 1" class="rounded-xl object-scale h-fit">
                     <h3 class="h3">{{ projectMap.get(0)?.title }}</h3>
                     <p class="p">{{ projectMap.get(0)?.longDescription }}</p>
-                    <p class="px-7.5 pb-7.5"><span class="inline-block text-md"><i>TECHNOLOGIES:</i></span><br><span class="inline-block text-xs">{{ projectMap.get(0)?.technologies?.join(", ") }}</span></p>
+                    <div>
+                        <iframe id="ytplayer" width="560" height="315" src="https://www.youtube.com/embed/86PGRyQjdzQ?si=bq0djnSskTqJYvqz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <p class="py-7.5"><span class="inline-block text-md"><i>TECHNOLOGIES:</i></span><br><span class="inline-block text-xs">{{ projectMap.get(0)?.technologies?.join(", ") }}</span></p>
                 </div>
             </div>
         }

@@ -74,7 +74,17 @@ export class ProjectsComponent implements OnInit {
       })
       setTimeout(() => {
         projectExpandContainer?.classList.toggle('hidden');
+        this.stopVideoAndClose();
       }, 150);
+    }
+  }
+
+  stopVideoAndClose(): void {
+    const ytplayer = document.getElementById('ytplayer') as HTMLVideoElement;
+    if (ytplayer) {
+      const currentSrc = ytplayer.src;
+      ytplayer.src = '';
+      ytplayer.src = currentSrc;
     }
   }
 
